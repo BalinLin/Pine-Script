@@ -1,0 +1,34 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © balinlin
+
+//@version=4
+study(title="3EMA + 3MA", shorttitle="3EMA + 3MA", overlay=true)
+
+len1 = input(30, minval=1, title="emaFast")
+len2 = input(60, minval=1, title="emaStander")
+len3 = input(120, minval=1, title="emaSlow")
+
+len4 = input(30, minval=1, title="maFast")
+len5 = input(60, minval=1, title="maStander")
+len6 = input(120, minval=1, title="maSlow")
+
+
+src = input(close, title="Source")
+
+fastemaOut = ema(src, len1)
+standardemaOut = ema(src, len2)
+slowemaOut = ema(src, len3)
+
+fastmaOut = sma(src, len4)
+standardmaOut = sma(src, len5)
+slowmaOut = sma(src, len6)
+
+offset = input(title="Offset", type=input.integer, defval=0, minval=-500, maxval=500)
+
+plot(fastemaOut, color=color.orange, title="Fast EMA", offset=offset)
+plot(standardemaOut, color=color.green, title="Standard EMA", offset=offset)
+plot(slowemaOut, color=color.black, title="Slow EMA", offset=offset)
+
+plot(fastmaOut, color=color.teal, title="Fast MA", offset=offset)
+plot(standardmaOut, color=color.red, title="Standard MA", offset=offset)
+plot(slowmaOut, color=color.fuchsia, title="Slow MA", offset=offset)

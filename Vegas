@@ -1,0 +1,20 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © balinlin
+
+//@version=4
+study(title="Vegas", shorttitle="Vegas", overlay=true)
+
+len_ema1 = input(12, minval=1, title="ema12")
+len_ema2 = input(144, minval=1, title="ema144")
+len_ema3 = input(169, minval=1, title="ema169")
+len_ema4 = input(576, minval=1, title="ema576")
+len_ema5 = input(676, minval=1, title="ema676")
+
+src = input(close, title="Source")
+offset = input(title="Offset", type=input.integer, defval=0, minval=-500, maxval=500)
+
+plot(ema(src, len_ema1), color=color.white, title="EMA 12", offset=offset)
+plot(ema(src, len_ema2), color=color.orange, title="EMA 144", offset=offset)
+plot(ema(src, len_ema3), color=color.orange, title="EMA 169", offset=offset)
+plot(ema(src, len_ema4), color=color.blue, title="EMA 576", offset=offset)
+plot(ema(src, len_ema5), color=color.blue, title="EMA 676", offset=offset)

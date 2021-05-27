@@ -1,0 +1,21 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © balinlin
+
+//@version=4
+study(title="200MA + 300MA", shorttitle="200MA + 300MA", overlay=true)
+
+len_ema1 = input(200, minval=1, title="ema200")
+len_ema2 = input(300, minval=1, title="ema300")
+
+len_ma1 = input(200, minval=1, title="ma200")
+len_ma2 = input(300, minval=1, title="ma300")
+
+
+src = input(close, title="Source")
+offset = input(title="Offset", type=input.integer, defval=0, minval=-500, maxval=500)
+
+plot(ema(src, len_ema1), color=color.blue, title="EMA 200", offset=offset)
+plot(ema(src, len_ema2), color=color.blue, title="EMA 300", offset=offset)
+
+plot(sma(src, len_ma1), color=color.orange, title="MA 200", offset=offset)
+plot(sma(src, len_ma2), color=color.orange, title="MA 300", offset=offset)
